@@ -1,0 +1,19 @@
+# build directory
+RPMS/
+SRPMS/
+SOURCES/
+BUILD/
+disk1/
+SPECS/
+
+_os
+_arch
+_distribution
+.rpmmacros
+
+# ignore version* files
+rocks-version.mk
+rocks-version-common.mk
+
+src/myrinet_mx/mx_*.tar.gz
+src/myrinet_mx/firmware/*
