@@ -1,0 +1,28 @@
+<?xml version="1.0" standalone="no"?>
+
+<kickstart>
+
+<description>
+The Myricom Myrinet Express (MX) Networking Software and Documentation License
+</description>
+
+<changelog>
+</changelog>
+
+<screen>
+
+       <title>Myricom Myrinet Express (MX) Networking Software And Documentation License Agreement</title>
+
+       <variable>
+               <label>I accept the Myricom Myrinet Express (MX) Networking Software and Documentation License Agreement.</label>
+               <name>Info_MyrinetLicense</name>
+               <type>string</type>
+               <size>0</size>
+               <default>I agree.</default>
+               <help>By clicking Next you Accept the Myricom Myrinet Express (MX) Networking Software And Documentation License Agreement.</help>
+       </variable>
+
+</screen>
+
+</kickstart>
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" standalone="no"?>
+
+<graph roll="myrinet-mx">
+
+
+	<description>
+	The Myrinet-MX Roll.
+
+	This roll contains MX - Myrinet Express, a low level communication driver for Myrinet 
+	and software that utilizes the driver (e.g., MPICH over MX and HPL over MX).
+	</description>
+
+	<edge from="hpc-base">
+		<to>myrinet-mx-base</to>
+	</edge>
+	<order head="hpc-base">
+		<tail>myrinet-mx-base</tail>
+	</order>
+
+	<edge from="server">
+		<to>myrinet-mx-frontend</to>
+		<to>myrinet-mx-drivers</to>
+	</edge>
+	<order head="server">
+		<tail>myrinet-mx-frontend</tail>
+	</order>
+	<order head="server">
+		<tail>myrinet-mx-drivers</tail>
+	</order>
+
+	<edge from="client">
+		<to>myrinet-mx-drivers</to>
+	</edge>
+	<order head="client">
+		<tail>myrinet-mx-drivers</tail>
+	</order>
+
+	<order head="kernel">
+		<tail>myrinet-mx-base</tail>
+	</order>
+
+	<!-- mx load parameters for Xen  dom0s -->
+	<edge from="xen-base">
+		<to>myrinet-mx-xen</to>
+	</edge>
+
+</graph>
+

@@ -1,0 +1,4 @@
+RELEASE = 1
+COLOR   = hotpink4
+
+REDHAT.ROOT = $(PWD)

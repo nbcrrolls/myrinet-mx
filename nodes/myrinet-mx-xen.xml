@@ -1,0 +1,55 @@
+<?xml version="1.0" standalone="no"?>
+<kickstart>
+
+<description>
+set mx_ether_lro=0 in Xen dom0
+</description>
+
+<post>
+<!--  modify the mx start up --> 
+
+<file name="/etc/rc.d/rocksconfig.d/pre-12-mx-params-modify" perms="0755">
+<![CDATA[ #!/bin/sh
+## add mx_ether_lro=0
+## Edit the MX_MODULE_PARAMS in the /etc/init.d/mx
+if [ -f /etc/init.d/mx ];  then
+        paramsDefined=`grep ^MX_MODULE_PARAMS /etc/init.d/mx`
+        if [ "x$paramsDefined" != "x" ]; then
+                /bin/sed -i  's/$MX_MODULE_PARAMS/ mx_msi_level=1 mx_ether_lro=0 $MX_MODULE_PARAMS/' /etc/init.d/mx
+        else
+                /bin/sed -i '0,/^#MX_MODULE_PARAMS.*/s//MX_MODULE_PARAMS=" mx_msi_level=1 mx_ether_lro=0 $MX_MODULE_PARAMS"/' /etc/init.d/mx
+        fi
+fi
+
+
+# Patch fma so that this node will act as a gateway for ethernet traffic. 
+# needed so that DomU guests can have their 10G ethernet reachable beyond
+# the local MX physical domain.
+SOURCEDIR=/opt/mx/source/mx-1.2.12/fma/fma
+
+cat > $SOURCEDIR/fma.patch << PATCHEOF
+*** fma_myri.c	2010-05-03 13:59:53.000000000 -0700
+--- fma_myri-xen.c	2010-05-03 14:02:45.000000000 -0700
+***************
+*** 128,133 ****
+--- 128,134 ----
+  
+    /* Tell everyone we are a full-blown FMA */
+    A.my_fma_flags |= FMA_FLAG_CAN_ROUTE
++ 		    | FMA_FLAG_IS_GATEWAY
+  		    | FMA_FLAG_CAN_VERIFY
+  		    | FMA_FLAG_CAN_DO_MOE
+  		    | FMA_FLAG_CAN_DISTRIBUTE;
+PATCHEOF
+cd $SOURCEDIR
+patch -c < fma.patch
+make fma
+make install
+
+rm -f /etc/rc.d/rocksconfig.d/pre-12-mx-params-modify
+]]>
+</file>
+</post>
+
+</kickstart> 
+

@@ -1,0 +1,9 @@
+Initial roll is from 2011. 
+Need  tests
+
+NOTE: mx-1.2.12 patched version was installed on FE and vm-containers to prevent log 
+files /var/run/fms//fma.log build up (fill disk within a week)
+make roll and install on vm containers and frontend.
+The log size problem effects only vm-container nodes and frontend, the compute nodes are unaffected.
+Bug report was filed with myrinet developmers.
+

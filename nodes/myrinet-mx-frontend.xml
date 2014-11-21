@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="no"?>
+
+
+<kickstart>
+
+
+<description>
+Install the Myrinet packages for the frontend.
+</description>
+
+<package>roll-myrinet_mx-usersguide</package>
+
+</kickstart> 
+
