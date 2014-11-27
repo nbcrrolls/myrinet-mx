@@ -1,13 +1,13 @@
-# --------------------------------------------------- -*- Makefile -*- --
+# 
 # $Id: Makefile,v 1.4 2009/06/15 01:18:36 phil Exp $
 #
 # @Copyright@
 # 
 # 				Rocks(r)
 # 		         www.rocksclusters.org
-# 		       version 5.2 (Chimichanga)
+# 		         version 6.2 (SideWinder)
 # 
-# Copyright (c) 2000 - 2009 The Regents of the University of California.
+# Copyright (c) 2000 - 2014 The Regents of the University of California.
 # All rights reserved.	
 # 
 # Redistribution and use in source and binary forms, with or without
@@ -77,13 +77,16 @@ include Rules.mk
 
 build:
 	gunzip -c $(MXNAME)_$(MXVERSION).tar.gz | tar -x
-	( cd patch-files && find . -type f | grep -v CVS | cpio -pduv ../ )
+	(cd patch-files && find . -type f | grep -v CVS | cpio -pduv ../)
 	tar czf $(MXNAME)_$(MXVERSION).patched.tar.gz $(MXNAME)-$(MXVERSION)
-	# used config below to use MX in ether mode
+	# use config below to use MX in ether mode
 	# ./configure --enable-ether-mode
 
 install::
 	mkdir -p $(ROOT)/$(PKGROOT)
 	install -m 644 $(MXNAME)_$(MXVERSION).patched.tar.gz $(ROOT)/$(PKGROOT)/$(MXNAME)_$(MXVERSION).tar.gz
+	mkdir -p $(ROOT)/etc/ld.so.conf.d
+	install -m 644 mx.conf $(ROOT)/etc/ld.so.conf.d
+
 clean::
 	rm -rf $(MXNAME)-$(MXVERSION)
