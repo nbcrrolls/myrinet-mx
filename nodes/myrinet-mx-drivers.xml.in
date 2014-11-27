@@ -27,8 +27,7 @@ cd mx-$VERSION
 ## Edit the MX_MODULE_PARAMS in the /etc/init.d/mx
 ## Change the default start order to be -before- the standard network
 if [ -f /etc/init.d/mx ];  then
-	/bin/sed -i '0,/^#MX_MODULE_PARAMS.*/s//MX_MODULE_PARAMS=" mx_max_endpoints=16 $MX_MODULE_PARAMS"/' /etc/init.d/mx
-	
+	/bin/sed -i '0,/^#MX_MODULE_PARAMS/s//MX_MODULE_PARAMS/' /etc/init.d/mx
 	/bin/sed -i 's/^# chkconfig.*/# chkconfig: 2345 09 70/' /etc/init.d/mx
 	/bin/sed -i 's/^# Required-Start.*//' /etc/init.d/mx
 	/bin/sed -i 's/^# Required-Stop.*//' /etc/init.d/mx
