@@ -16,11 +16,6 @@ Install the packages that use Myrinet on all Rocks nodes.
 <package>openmpi-myrinet_mx</package>
 
 <post>
-
-<file name="/etc/ld.so.conf" mode="append">
-/opt/mx/lib64
-</file>
-
 </post>
 
 </kickstart> 
