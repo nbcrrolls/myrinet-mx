@@ -1,0 +1,48 @@
+<?xml version="1.0" standalone="no"?>
+<kickstart>
+<package>open-mx</package>
+
+<description>
+Install the Open-MX drivers and software
+</description>
+
+<post>
+
+<!--  build the driver from source distro in /opt/open-mx/source --> 
+
+<file name="/etc/rc.d/rocksconfig.d/pre-11-openmx-src-install" perms="0755">
+<![CDATA[ #!/bin/sh
+
+VERSION=MXVERSION
+NAME=open-mx
+
+cd /opt/$NAME/source/
+tar xzf $NAME-$VERSION.tar.gz
+cd $NAME-$VERSION
+./configure --prefix=/opt/open-mx 
+make 
+make install 
+
+/opt/$NAME/sbin/omx_local_install
+/sbin/ldconfig 
+
+## Edit the OMX_MODULE_PARAMS in the /etc/init.d/open-mx
+if [ -f /etc/open-mx/open-mx.conf ];  then
+	/bin/sed -i '0,/^#OMX_MODULE_PARAMS.*/s//OMX_MODULE_PARAMS=" endpoints=32 $OMX_MODULE_PARAMS"/' /etc/init.d/open-mx
+fi
+	
+## Change the default start order to be -before- the standard network
+if [ -f /etc/init.d/open-mx ];  then
+	/bin/sed -i 's/^# chkconfig.*/# chkconfig: 2345 09 70/' /etc/init.d/open-mx
+	/bin/sed -i 's/^# Required-Start.*//' /etc/init.d/open-mx
+	/bin/sed -i 's/^# Required-Stop.*//' /etc/init.d/open-mx
+fi
+
+chkconfig --add open-mx
+
+rm -f /etc/rc.d/rocksconfig.d/pre-11-openmx-src-install
+]]>
+</file>
+</post>
+
+</kickstart> 
