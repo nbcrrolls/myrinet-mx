@@ -25,7 +25,6 @@
 		<tail>myrinet-mx-frontend</tail>
 	</order>
 	<order head="server">
-		<tail>myrinet-mx-drivers</tail>
 	</order>
 
 	<edge from="client">
@@ -38,11 +37,6 @@
 	<order head="kernel">
 		<tail>myrinet-mx-base</tail>
 	</order>
-
-	<!-- mx load parameters for Xen  dom0s -->
-	<edge from="xen-base">
-		<to>myrinet-mx-xen</to>
-	</edge>
 
 </graph>
 
