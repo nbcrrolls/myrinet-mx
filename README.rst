@@ -64,10 +64,10 @@ If this problem shows up with mx-1.2.16 verison, need to apply a similar patch
 Myrinet Switch Firmware
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Drivers distro mx_1.2.16.tar.gz is available on google drive on nbcr.ucsd@gmail.com account
-in ``privaterolls/myrinet-mx/`` and the sw firmware in ``privaterolls/myrinet-mx/firmware/`` ::
+in ``privaterolls/myrinet-mx/`` and the sw firmware in ``privaterolls/myrinet-mx/firmware/`` 
 
-    :Switch: Software
-    :Myri-10G 10G-{21U,12U,7U}-{CLOS,EDGE}-ENCL: fridgefs.img
-    :Myri-10G 10G-CLOS-ENCL (with the TFT Display): fridgefs.img                
-    :Myrinet-2000 M3-CLOS-ENCL-B/M3-SPINE-ENCL-B: shipfs.img	
-    :Myrinet-2000 M3-E128, M3-E64, M3-E32, and M3-E16: m3-dist.tar.gz	
+:Switch:                                           Software
+:Myri-10G 10G-{21U,12U,7U}-{CLOS,EDGE}-ENCL:       fridgefs.img
+:Myri-10G 10G-CLOS-ENCL (with the TFT Display):    fridgefs.img                
+:Myrinet-2000 M3-CLOS-ENCL-B/M3-SPINE-ENCL-B:      shipfs.img	
+:Myrinet-2000 M3-E128, M3-E64, M3-E32, and M3-E16: m3-dist.tar.gz	
