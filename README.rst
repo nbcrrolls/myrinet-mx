@@ -9,19 +9,19 @@ Introduction
 ----------------
 This roll installs  myrinet drivers and software for Myricom switch
 
-Myrinet drivers and software for Myricom switch
 
 Requirements
 ~~~~~~~~~~~~~~
 To build the roll, first, download myrinet-mx src from google drive 
-and place in `src/myrinet_mx`. Update `/src/myrinet_mx/version.mk`
+and place in ``src/myrinet_mx``. Update ``/src/myrinet_mx/version.mk``
 to reflect the version.
 
 
-Buildinging
+Building
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To build the roll execite: ::
+To build the roll execute: ::
+
     # make roll 2>&1 | tee build.log
 
 
@@ -48,10 +48,11 @@ Roll installs the following: ::
     /opt/mx
     /opt/mx/source/mx_1.2.16.tar.gz
 
-and then configures and installs mx drivers form the source using the node's kernel.
+and then configures and installs mx drivers from source using a current kernel on the node.
 
 Notes from 2011 roll
 ~~~~~~~~~~~~~~~~~~~~~~
+
 mx-1.2.12 patched version was installed on FE and vm-containers to prevent log 
 files /var/run/fms//fma.log build up (fill disk within a week)
 make roll and install on vm containers and frontend.
@@ -63,7 +64,7 @@ If this problem shows up with mx-1.2.16 verison, need to apply a similar patch
 Myrinet Switch Firmware
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Drivers distro mx_1.2.16.tar.gz is available on google drive on nbcr.ucsd@gmail.com account
-in `privaterolls/myrinet-mx/` and the sw itch firmware in privaterolls/myrinet-mx/firmware/
+in ``privaterolls/myrinet-mx/`` and the sw firmware in ``privaterolls/myrinet-mx/firmware/`` ::
 
     :Switch: Software
     :Myri-10G 10G-{21U,12U,7U}-{CLOS,EDGE}-ENCL: fridgefs.img
