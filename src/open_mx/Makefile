@@ -13,10 +13,14 @@ include Rules.mk
 
 build:
 
+rpm::
+	echo " Don't use open-mx"
+
 install::
-	mkdir -p $(ROOT)/$(PKGROOT)
-	install -m 644 $(NAME)-$(VERSION).tar.gz $(ROOT)/$(PKGROOT)/
-	mkdir -p $(ROOT)/etc//ld.so.conf.d
-	install -m 644 open-mx.conf $(ROOT)/etc//ld.so.conf.d
+	echo " Don't use open-mx"
+	#mkdir -p $(ROOT)/$(PKGROOT)
+	#install -m 644 $(NAME)-$(VERSION).tar.gz $(ROOT)/$(PKGROOT)/
+	#mkdir -p $(ROOT)/etc//ld.so.conf.d
+	#install -m 644 open-mx.conf $(ROOT)/etc//ld.so.conf.d
 clean::
 	rm -rf $(NAME)-$(VERSION)
