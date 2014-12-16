@@ -31,7 +31,7 @@ Installing
 #. A roll can be added during a frontend build as any other roll.
 
 #. A roll can be added to the existing frontend. 
-   Execute all commands from top level lifemapper-server/ ::
+   Execute all commands from top level directory ::
 
    # rocks add roll *.iso
    # rocks enable roll myrinet-mx
