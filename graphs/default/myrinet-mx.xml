@@ -13,15 +13,19 @@
 		<to>myrinet-mx-frontend</to>
 		<to>myrinet-mx-drivers</to>
 	</edge>
+
 	<order head="server">
 		<tail>myrinet-mx-frontend</tail>
 	</order>
+
 	<order head="server">
+		<tail>myrinet-mx-drivers</tail>
 	</order>
 
 	<edge from="client">
 		<to>myrinet-mx-drivers</to>
 	</edge>
+
 	<order head="client">
 		<tail>myrinet-mx-drivers</tail>
 	</order>
